@@ -18,7 +18,7 @@ namespace TestOfTeamwork;
 public class SceneChanger : MonoBehaviour
 {
     private const bool Debug = false;
-    private const string AbPath = "E:\\Documents\\Projects\\Unity Projects\\TestOfTeamwork Assets\\Assets\\AssetBundles\\";
+    private const string AbPath = "C:\\Users\\SFG\\Documents\\Projects\\Unity Projects\\TestOfTeamwork Assets\\Assets\\AssetBundles\\";
 
     public AssetBundle AbOverallMat { get; private set; } = null;
     public AssetBundle AbTotScene { get; private set; } = null;
@@ -362,8 +362,9 @@ public class SceneChanger : MonoBehaviour
     }
     private void ExpandEndless(Scene scene, int total)
     {
-        var part = Instantiate(scene.Find($"Part {total - 1}"));
-        part.transform.SetPosition2D(32 * total, 0);
+        var orig = scene.Find($"Part {total - 1}");
+        var part = Instantiate(orig, orig.transform.parent, true);
+        part.transform.SetPositionX(32 * total);
         part.name = $"Part {total}";
     }
 

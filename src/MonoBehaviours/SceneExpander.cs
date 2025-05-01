@@ -29,6 +29,7 @@ public class SceneExpander : MonoBehaviour
 
         expandingAction.Invoke(scene, (int)(_gm.sceneWidth / 32));
         _gm.tilemap.width += 32;
+        _gm.tilemap.Layers[0].numColumns += 1;
         _gm.sceneWidth += 32;
         _cc.xLimit += 32;
     }
